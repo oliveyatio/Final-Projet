@@ -1,1 +1,30 @@
 
+# Environnements virtuels
+venv/
+env/
+
+# Compilations Python
+__pycache__/
+*.py[cod]
+
+# Fichiers de logs
+*.log
+
+# Notebooks Jupyter
+.ipynb_checkpoints/
+
+# Fichiers de configuration spécifique à l'éditeur de texte
+.vscode/
+.idea/
+
+# Fichiers générés par le système d'exploitation
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Fichiers spécifiques à l'IDE PyCharm
+*.iml
+*.iws
+.idea/
+
+# Autres fichiers ou dossiers spécifiques
+*.sqlite3
