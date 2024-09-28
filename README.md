@@ -7,7 +7,6 @@ This project aims to predict flight delays based on a combination of flight data
 The dataset used for this project includes:
 
 Flight Data: Collected from the OpenSky API, which provides detailed flight information (departure, arrival airports, timestamps, etc.).
-Weather Data: Includes weather conditions such as temperature, humidity, and descriptions (e.g., "Rain, Overcast").
 
 Weather Data: Includes weather conditions such as temperature, humidity, and descriptions (e.g., "Rain, Overcast").
 
@@ -36,7 +35,7 @@ Logistic Regression
 Additionally, a stacking ensemble was used to combine the strengths of these models and create a meta-model for improved performance.
 
 # Results
-The best-performing model was the SVM model, achieving an accuracy of 99.93%. The stacking model performed slightly below this, with an accuracy of 99.88%, but is still considered a robust solution due to its ability to leverage multiple models.
+The best-performing model was the SVM model  optimized with the Best hyperparameters found :  {'C': 100, 'gamma': 'scale', 'kernel': 'linear'}, achieving an accuracy of 99.93%. The stacking model performed slightly below this, with an accuracy of 99.88%, but is still considered a robust solution due to its ability to leverage multiple models.
 
 Model            Performance:
 Model	         Accuracy
