@@ -35,14 +35,15 @@ Logistic Regression
 Additionally, a stacking ensemble was used to combine the strengths of these models and create a meta-model for improved performance.
 
 # Results
-The best-performing model was the SVM model  optimized with the Best hyperparameters found :  {'C': 100, 'gamma': 'scale', 'kernel': 'linear'}, achieving an accuracy of 99.93%. The stacking model performed slightly below this, with an accuracy of 99.88%, but is still considered a robust solution due to its ability to leverage multiple models.
+The best-performing model was the STACKING model, achieving an accuracy of 99.94%. It considered a robust solution due to its ability to leverage multiple models.
 
-Model            Performance:
-Model	         Accuracy
-SVM  	         99.93%
-KNN	             99.01%
+           
+Model	             Accuracy
+SVM  	             98.93%
+KNN	               99.01%
+SVM OPTIMIZE       99.93%
 Logistic Regression	99.93%
-Stacking Ensemble	99.88%
+Stacking Ensemble	  99.94%
 
 
 # How to Run the Project
@@ -67,10 +68,11 @@ python final_project.ipynb
 # Model Saving
 All models (SVM, KNN, Logistic Regression, stacking) and the scaler were saved using joblib. You can find the saved models in the models/ folder:
 
-svm_model_final.pkl
+svm_model.pkl
+optimize_svm_model.pkl
 final_knn_model.pkl
 logistic regression_model_final.pkl
-stacking_final.pkl
+stacking_model.pkl
 
 
 # Future Improvements
