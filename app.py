@@ -3,7 +3,6 @@ import pandas as pd
 import joblib
 from sklearn.preprocessing import StandardScaler
 
-import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load model, scaler and encoder
@@ -117,24 +116,6 @@ def make_prediction():
 
 
 # Page 2: Delay statistics
-def Delay_statistics():
-  
-    st.markdown("<h1 style='color: #4CAF50;'>Statistics on Delayed Flights</h1>", unsafe_allow_html=True)
-
-    total_predictions = len(st.session_state.get('predictions', []))
-    if total_predictions == 0:
-        st.write("No predictions yet.")
-        return
-
-    # Calculate on-time and delayed flights
-    delayed = sum(st.session_state['predictions'])  # Flights predicted as delayed
-    on_time = total_predictions - delayed  # Flights on time
-
-    st.write(f"**Total number of flights analyzed** : {total_predictions}")
-    st.write(f"**Flights on time** : {on_time} ({on_time / total_predictions * 100:.2f}%)")
-    st.write(f"**Delayed flights** : {delayed} ({delayed / total_predictions * 100:.2f}%)")
-
-
 def delay_statistics2():
     st.markdown("<h1 style='color: #4CAF50;'>Statistics on Delayed Flights</h1>", unsafe_allow_html=True)
 
@@ -161,39 +142,6 @@ def delay_statistics2():
 
 
 # Page 3: Best Day to Travel
-def display_best_day():
-    st.markdown("<h1 style='color: #4CAF50;'>Best Day to Travel</h1>", unsafe_allow_html=True)
-
-    if len(st.session_state.get('predictions', [])) == 0:
-        st.write("No predictions yet.")
-        return
-
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    delays_per_day = {day: {'delay': 0, 'total': 0} for day in days}
-
-    # Calculate delays by day
-    for pred, day in zip(st.session_state['predictions'], st.session_state['days']):
-        day_name = days[day]
-        delays_per_day[day_name]['total'] += 1
-        if pred == 1:  # If the flight is delayed
-            delays_per_day[day_name]['delay'] += 1
-
-    # Calculate the delay rate for each day
-    delay_rate = {day: (info['delay'] / info['total'] * 100) if info['total'] > 0 else 0
-                  for day, info in delays_per_day.items()}
-
-    # Display the day with the fewest delays
-    best_day = min(delay_rate, key=delay_rate.get)
-    st.write(f"**The best day to travel is: {best_day}** with a delay rate of only {delay_rate[best_day]:.2f}%.")
-
-    # Display the delay rate for each day
-    st.subheader("Delay Rate by Day of the Week")
-    for day, rate in delay_rate.items():
-        st.write(f"{day}: {rate:.2f}% delayed flights")
-
-
-
-
 def display_best_day2():
     st.markdown("<h1 style='color: #4CAF50;'>Best Day to Travel</h1>", unsafe_allow_html=True)
 
@@ -232,57 +180,6 @@ def display_best_day2():
     # Display the chart in Streamlit
     st.pyplot(fig)
 
-
-
-
-
-
-
-
-
-
-              
-# Page 4: Meilleures Conditions Météorologiques pour un Vol
-#def afficher_meilleures_conditions():
-    #st.markdown("<h1 style='color: #4CAF50;'>Meilleures Conditions Météorologiques pour un Vol</h1>", unsafe_allow_html=True)
-
-    #if len(st.session_state.get('predictions', [])) == 0:
-        #st.write("Aucune prédiction effectuée pour le moment.")
-       # return
-
-   # conditions_retard = {condition: {'retard': 0, 'total': 0} for condition in ['Overcast', 'Partially cloudy', 'Rain, Overcast', 'Rain, Partially cloudy', 'Snow, Rain, Overcast', 'Snow, Rain, Partially cloudy']}
-
-    # Calculer les retards par conditions météorologiques
-    #for pred, conditions in zip(st.session_state['predictions'], st.session_state['conditions']):
-      #  arrival_condition = conditions['conditions_arrival']
-       # departure_condition = conditions['conditions_departure']
-        
-       # if arrival_condition in conditions_retard:
-           # conditions_retard[arrival_condition]['total'] += 1
-            #if pred == 1:
-               # conditions_retard[arrival_condition]['retard'] += 1
-        
-       # if departure_condition in conditions_retard:
-           # conditions_retard[departure_condition]['total'] += 1
-           # if pred == 1:
-              #  conditions_retard[departure_condition]['retard'] += 1
-
-    # Calculer le taux de retard pour chaque condition météorologique
-    #taux_retard = {condition: (info['retard'] / info['total'] * 100) if info['total'] > 0 else 0
-                #   for condition, info in conditions_retard.items()}
-
-    # Afficher la condition avec le moins de retards
-   # meilleure_condition = min(taux_retard, key=taux_retard.get)
-    #st.write(f"**La meilleure condition météorologique pour voyager est : {meilleure_condition}** avec un taux de retard de seulement {taux_retard[meilleure_condition]:.2f}%.")
-
-    # Afficher le taux de retard pour chaque condition météorologique
-    #st.subheader("Taux de retard par condition météorologique")
-    #for condition, taux in taux_retard.items():
-       # st.write(f"{condition} : {taux:.2f}% de retards")
-
-
-
-
 # Sidebar pnavigation
 st.sidebar.markdown("<h2 style='color: #007BFF;'>Navigation</h2>", unsafe_allow_html=True)
 page = st.sidebar.selectbox(
@@ -297,6 +194,5 @@ elif page == "Delay statistics":
     delay_statistics2()
 elif page == "Best day to travel":
     display_best_day2()
-#elif page == "Meilleures Conditions Météorologiques pour un Vol":
-   # afficher_meilleures_conditions()
+
 
