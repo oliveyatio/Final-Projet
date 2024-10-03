@@ -7,6 +7,7 @@ This project aims to predict flight delays based on a combination of flight data
 The dataset used for this project includes:
 
 Flight Data: Collected from the OpenSky API, which provides detailed flight information (departure, arrival airports, timestamps, etc.).
+Weather Data: Includes weather conditions such as temperature, humidity, and descriptions (e.g., "Rain, Overcast").
 
 Weather Data: Includes weather conditions such as temperature, humidity, and descriptions (e.g., "Rain, Overcast").
 
@@ -35,14 +36,15 @@ Logistic Regression
 Additionally, a stacking ensemble was used to combine the strengths of these models and create a meta-model for improved performance.
 
 # Results
-The best-performing model was the SVM model  optimized with the Best hyperparameters found :  {'C': 100, 'gamma': 'scale', 'kernel': 'linear'}, achieving an accuracy of 99.93%. The stacking model performed slightly below this, with an accuracy of 99.88%, but is still considered a robust solution due to its ability to leverage multiple models.
+The best-performing model was the STACKING model, achieving an accuracy of 99.94%. It considered a robust solution due to its ability to leverage multiple models.
 
-Model            Performance:
-Model	         Accuracy
-SVM  	         99.93%
-KNN	             99.01%
+           
+Model	             Accuracy
+SVM  	             98.93%
+KNN	               99.01%
+SVM OPTIMIZE       99.93%
 Logistic Regression	99.93%
-Stacking Ensemble	99.88%
+Stacking Ensemble	  99.94%
 
 
 # How to Run the Project
@@ -68,15 +70,15 @@ python final_project.ipynb
 All models (SVM, KNN, Logistic Regression, stacking) and the scaler were saved using joblib. You can find the saved models in the models/ folder:
 
 svm_model_final.pkl
+optimized_svm_model.pkl
 final_knn_model.pkl
 logistic regression_model_final.pkl
-stacking_final.pkl
+stacking_model.pkl
 
 
 # Future Improvements
 Feature Engineering: More advanced features such as flight routes, airline, and specific weather parameters could improve the model's accuracy.
 Model Optimization: Hyperparameter tuning can be further explored to improve the stacking model's performance.
 Real-time Deployment: Deploy the model as an API to provide real-time predictions based on live flight data.
-
 
 
